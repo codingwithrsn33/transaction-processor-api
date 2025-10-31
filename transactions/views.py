@@ -40,32 +40,16 @@ import time
 
 class WebhookTransaction(APIView):
     def post(self, request):
-        # Try to get transaction_id from multiple sources (JSON, form-data, query)
-        transaction_id = (
-            request.data.get("transaction_id")
-            or request.POST.get("transaction_id")
-            or request.query_params.get("transaction_id")
-        )
+        data = request.data
+        transaction_id = data.get("transaction_id")
 
-        # If missing, return error
         if not transaction_id:
             return Response(
                 {"error": "transaction_id is required"},
                 status=status.HTTP_400_BAD_REQUEST
             )
 
-        # Simulate processing delay (like webhook verification)
-        time.sleep(3)  # You can change 3 to 30 seconds for demo
 
-        # Return success response
-        return Response(
-            {
-                "status": "success",
-                "transaction_id": transaction_id,
-                "message": "Transaction processed successfully"
-            },
-            status=status.HTTP_200_OK
-        )
 
 
         # Idempotency check: only one transaction per ID
