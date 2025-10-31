@@ -189,7 +189,7 @@ Framework	Django + Django REST Framework	Fast, reliable API development
 
 DB	SQLite	Lightweight, persistent local DB
 
-Background Tasks	Thread-based async delay	Simulates real async (Celery alternative)
+Background Tasks	Thread-based async delay	Simulates real async (Celery )
 
 Deployment	Render.com	Free cloud hosting, simple setup
 
@@ -241,6 +241,7 @@ Rohan Subhash Darekar
 Python | Django | REST APIs | SQL | Cloud Deployment
 📍 Built for Backend Developer Assessment
 GitHub: codingwithrsn33
+
 
 
 
