@@ -39,7 +39,7 @@ It ensures:
 GET https://transaction-processor-api-6.onrender.com/
 
 
-Copy code
+
 
 **Expected Response**
 ```json
@@ -47,23 +47,21 @@ Copy code
   "status": "HEALTHY",
   "current_time": "2025-11-01T12:34:56Z"
 }
+
 ✅ Confirms the app is live and reachable.
 
 🔹 Step 2: Send a Webhook
 Request
 
 
-Copy code
+[ 1. Below URL paste it into Postman URL With POST request ]
+  
 POST https://transaction-processor-api-6.onrender.com/v1/webhooks/transactions
-Headers
 
 
-Copy code
-Content-Type: application/json
-Body (raw JSON)
 
-json
-Copy code
+[2. Under Body select JSON and type context ]
+
 {
   "transaction_id": "txn_1009",
   "source_account": "acc_user_789",
@@ -71,14 +69,15 @@ Copy code
   "amount": 1500,
   "currency": "INR"
 }
-Expected Response
 
-json
-Copy code
+Expected Response :
+
 {
   "message": "Accepted for processing",
   "transaction_id": "txn_1009"
 }
+
+
 📈 HTTP Status: 202 Accepted
 ⚡ Response Time: under 500 ms
 💡 The background process now runs for ~30 seconds.
@@ -89,12 +88,13 @@ After ~30 seconds, check the status:
 Request
 
 
-Copy code
+[ Put this URL in Postman with GET request for checking Status ]
+
 GET https://transaction-processor-api-6.onrender.com/v1/transactions/txn_1009
+
 Expected Response (after 30 seconds)
 
-json
-Copy code
+
 {
   "transaction_id": "txn_1009",
   "source_account": "acc_user_789",
@@ -105,6 +105,7 @@ Copy code
   "created_at": "2025-10-31T20:05:39.167538Z",
   "processed_at": "2025-10-31T20:06:09.175100Z"
 }
+
 If called before 30s, status will show "PROCESSING" and "processed_at": null.
 
 🔹 Step 4: Duplicate Webhook Prevention
@@ -118,13 +119,11 @@ Repeated webhooks are gracefully ignored.
 🔹 Step 5: Example of an Already Processed Transaction
 You can view this sample transaction:
 
-bash
-Copy code
+
 GET https://transaction-processor-api-6.onrender.com/v1/transactions/txn_1004
 Example Response
 
-json
-Copy code
+
 {
   "transaction_id": "txn_1004",
   "source_account": "acc_user_789",
@@ -138,51 +137,43 @@ Copy code
 ⚙️ Example cURL Commands
 Health Check
 
-bash
-Copy code
+
 curl -i https://transaction-processor-api-6.onrender.com/
 Send Webhook
 
-bash
-Copy code
+
 curl -i -X POST https://transaction-processor-api-6.onrender.com/v1/webhooks/transactions \
   -H "Content-Type: application/json" \
   -d '{"transaction_id":"txn_1009","source_account":"acc_user_789","destination_account":"acc_merchant_456","amount":1500,"currency":"INR"}'
 Check Status (after 30s)
 
-bash
-Copy code
+
 curl -i https://transaction-processor-api-6.onrender.com/v1/transactions/txn_1009
 
 🧰 How to Run Locally
 Clone Repo
 
-bash
-Copy code
+
 git clone https://github.com/codingwithrsn33/transaction-processor-api.git
 cd transaction-processor-api
 Create Virtual Environment
 
-bash
-Copy code
+
 python -m venv env
 source env/bin/activate  # (Mac/Linux)
 env\Scripts\activate     # (Windows)
 Install Dependencies
 
-bash
-Copy code
+
 pip install -r requirements.txt
 Apply Migrations
 
-bash
-Copy code
+
 python manage.py makemigrations
 python manage.py migrate
 Run Development Server
 
-bash
-Copy code
+
 python manage.py runserver
 Test Locally
 
@@ -236,3 +227,4 @@ Rohan Subhash Darekar
 Python | Django | REST APIs | SQL | Cloud Deployment
 📍 Built for Backend Developer Assessment
 GitHub: codingwithrsn33
+
