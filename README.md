@@ -182,15 +182,24 @@ Visit http://127.0.0.1:8000/ → health check
 Use Postman to test same endpoints locally.
 
 🧠 Technical Choices
+
 Feature	Technology	Reason
+
 Framework	Django + Django REST Framework	Fast, reliable API development
+
 DB	SQLite	Lightweight, persistent local DB
+
 Background Tasks	Thread-based async delay	Simulates real async (Celery alternative)
+
 Deployment	Render.com	Free cloud hosting, simple setup
+
 Idempotency	Unique transaction_id check	Prevents duplicates
+
 Logging	Django default + print statements	Simple monitoring
 
+
 🧩 Key Requirements Covered
+
 ✅ Fast Response (<500ms) on webhook receive
 ✅ Background Processing (30s delay)
 ✅ Persistent Storage
@@ -198,6 +207,7 @@ Logging	Django default + print statements	Simple monitoring
 ✅ Health Check Endpoint
 ✅ Public Cloud Deployment
 ✅ Test Instructions & README Provided
+
 
 🚀 Quick Verification Checklist (for reviewers)
 Test	Expected Outcome
@@ -214,18 +224,23 @@ DisallowedHost	Render host missing from ALLOWED_HOSTS	Added "*" in settings
 Response delay >500ms	Network lag or free-tier wake-up time	Retry after app wakes up
 Empty result on /v1/transactions/{id}	Queried before processing completed	Wait 30s and retry
 
+
 💬 Final Note 
 Please test using Postman as per the above instructions.
 The API is live and publicly hosted at:
 
+
 👉 https://transaction-processor-api-6.onrender.com/
+
 
 You can verify health, send webhooks, and check the transaction status after ~30 seconds to confirm background processing.
 
 🧱 Author
+
 Rohan Subhash Darekar
 Python | Django | REST APIs | SQL | Cloud Deployment
 📍 Built for Backend Developer Assessment
 GitHub: codingwithrsn33
+
 
 
