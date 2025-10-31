@@ -41,8 +41,8 @@ GET https://transaction-processor-api-6.onrender.com/
 
 
 
-**Expected Response**
-```json
+Expected Response
+
 {
   "status": "HEALTHY",
   "current_time": "2025-11-01T12:34:56Z"
@@ -227,4 +227,5 @@ Rohan Subhash Darekar
 Python | Django | REST APIs | SQL | Cloud Deployment
 📍 Built for Backend Developer Assessment
 GitHub: codingwithrsn33
+
 
